@@ -149,9 +149,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  html {
     scroll-behavior: auto !important;
+  }
+
+  /* Scroll-linked parallax/zoom effects can cause discomfort, so these respect
+     the OS setting. Simple linear loops (marquee ticker, route truck, progress
+     bar) are left running — they're core content, not decorative parallax,
+     and many phones have this setting on by default. */
+  .animate-kenburns {
+    animation: none !important;
   }
 }

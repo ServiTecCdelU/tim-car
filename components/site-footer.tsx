@@ -40,9 +40,20 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-border">
-        <p className="mx-auto max-w-7xl px-5 py-6 font-mono text-xs text-muted-foreground md:px-8">
-          © {new Date().getFullYear()} Expreso Tim Car S.R.L.
-        </p>
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-6 md:px-8">
+          <p className="font-mono text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Expreso Tim Car S.R.L.
+          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://visitor-badge.laobi.icu/badge?page_id=expresotimcar.vercel.app&left_text=visitas"
+            alt="Contador de visitas"
+            width={110}
+            height={20}
+            className="h-5 w-auto opacity-70"
+            loading="lazy"
+          />
+        </div>
       </div>
     </footer>
   )
