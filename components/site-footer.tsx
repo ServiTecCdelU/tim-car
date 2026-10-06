@@ -42,7 +42,15 @@ export function SiteFooter() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-6 md:px-8">
           <p className="font-mono text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Expreso Tim Car S.R.L.
+            Hecho por{" "}
+            <a
+              href="https://servitec.net.ar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary"
+            >
+              ServiTec
+            </a>
           </p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
