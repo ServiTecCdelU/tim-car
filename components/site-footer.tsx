@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { contact, navLinks } from "@/lib/site"
 
 export function SiteFooter() {
@@ -18,9 +19,9 @@ export function SiteFooter() {
           <ul className="mt-4 flex flex-col gap-2">
             {navLinks.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="text-sm hover:text-primary">
+                <Link href={l.href} className="text-sm hover:text-primary">
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

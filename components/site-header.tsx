@@ -1,6 +1,8 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
@@ -8,6 +10,7 @@ import { contact, navLinks } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 export function SiteHeader() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -17,6 +20,8 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
+
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href))
 
   return (
     <header
@@ -28,28 +33,40 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 md:px-8">
-        <a href="#inicio" className="relative block h-10 w-24 md:h-12 md:w-28">
+        <Link href="/" className="relative block h-10 w-24 md:h-12 md:w-28">
           <Image
             src="/images/logo_blanco.png"
-            alt="Expreso Tim Car S.R.L."
+            alt="Expreso Tim Car S.R.L. - Inicio"
             fill
             sizes="112px"
             className="object-contain object-left"
             priority
           />
-        </a>
+        </Link>
 
-        <nav aria-label="Principal" className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="group relative text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
+        <nav aria-label="Principal" className="hidden items-center gap-7 lg:flex">
+          {navLinks.map((link) => {
+            const active = !link.href.startsWith("#") && isActive(link.href)
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "group relative text-sm font-medium transition-colors hover:text-foreground",
+                  active ? "text-foreground" : "text-foreground/75",
+                )}
+              >
+                {link.label}
+                <span
+                  className={cn(
+                    "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full",
+                    active ? "w-full" : "w-0",
+                  )}
+                />
+              </Link>
+            )
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -85,22 +102,29 @@ export function SiteHeader() {
             className="overflow-hidden lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-5 pt-4 pb-2">
-              {navLinks.map((link, i) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block py-3 text-2xl font-bold tracking-tight"
+              {navLinks.map((link, i) => {
+                const active = !link.href.startsWith("#") && isActive(link.href)
+                return (
+                  <motion.li
+                    key={link.href}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: i * 0.05 }}
                   >
-                    {link.label}
-                  </a>
-                </motion.li>
-              ))}
+                    <Link
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "block py-3 text-2xl font-bold tracking-tight",
+                        active && "text-primary",
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.li>
+                )
+              })}
               <li className="pt-3 pb-2">
                 <a
                   href={contact.whatsappHref}
