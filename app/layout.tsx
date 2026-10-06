@@ -17,28 +17,70 @@ const plexMono = IBM_Plex_Mono({
   variable: '--font-plex-mono',
 })
 
+const siteUrl = 'https://expresotimcar.com.ar'
+const siteName = 'Expreso Tim Car'
+const title = 'Expreso Tim Car | Transporte de cargas y logística en el centro del país'
+const description =
+  'Más de 40 años transportando sus cargas con seguridad y compromiso. Cadena de frío, entrega puerta a puerta y 9 sucursales entre Entre Ríos, Santa Fe, Córdoba y Buenos Aires.'
+
 export const metadata: Metadata = {
-  title: 'Expreso Tim Car | Transporte de cargas y logística en el centro del país',
-  description:
-    'Más de 40 años transportando sus cargas con seguridad y compromiso. Cadena de frío, entrega puerta a puerta y 7 sucursales entre Entre Ríos, Santa Fe, Córdoba y Buenos Aires.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: title,
+    template: `%s | ${siteName}`,
+  },
+  description,
+  keywords: [
+    'transporte de cargas',
+    'logística',
+    'cadena de frío',
+    'Entre Ríos',
+    'Concepción del Uruguay',
+    'Expreso Tim Car',
+    'transporte puerta a puerta',
+  ],
+  authors: [{ name: siteName }],
+  applicationName: siteName,
+  category: 'Transporte y logística',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_AR',
+    url: siteUrl,
+    siteName,
+    title,
+    description,
+    images: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: '/opengraph-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: siteName,
       },
     ],
-    apple: '/apple-icon.png',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/opengraph-image.jpg'],
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-light-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+    shortcut: '/favicon.ico',
+  },
+  manifest: '/site.webmanifest',
 }
 
 export const viewport: Viewport = {

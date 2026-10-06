@@ -40,7 +40,7 @@ export function ProcessSteps() {
             </motion.div>
           </div>
 
-          <ol className="grid gap-4 sm:grid-cols-2 md:mt-8 md:grid-cols-4">
+          <ol className="grid grid-cols-2 gap-3 md:mt-8 md:grid-cols-4 md:gap-4">
             {steps.map((s, i) => (
               <motion.li
                 key={s.title}
@@ -48,14 +48,14 @@ export function ProcessSteps() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12, duration: 0.6 }}
-                className="rounded-2xl border border-border bg-background/70 p-5 backdrop-blur-md md:p-6"
+                className="rounded-2xl border border-border bg-background/70 p-3.5 backdrop-blur-md md:p-6"
               >
                 <div className="flex items-center justify-between">
-                  <s.icon className="size-6 text-primary" aria-hidden="true" />
+                  <s.icon className="size-5 text-primary md:size-6" aria-hidden="true" />
                   <span className="font-mono text-xs text-muted-foreground">0{i + 1}</span>
                 </div>
-                <h3 className="mt-5 text-xl font-black tracking-tight uppercase [font-stretch:115%]">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
+                <h3 className="mt-3 text-base font-black tracking-tight uppercase md:mt-5 md:text-xl [font-stretch:115%]">{s.title}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground md:mt-2 md:text-sm">{s.body}</p>
               </motion.li>
             ))}
           </ol>

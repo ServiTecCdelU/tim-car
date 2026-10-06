@@ -76,7 +76,7 @@ export function ServiceBlock({
           </motion.h2>
           <p className="mt-5 text-pretty leading-relaxed text-muted-foreground md:text-lg">{description}</p>
 
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-8 grid grid-cols-2 gap-2.5 md:gap-3">
             {features.map((f, i) => (
               <motion.li
                 key={f.title}
@@ -84,14 +84,14 @@ export function ServiceBlock({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
-                className="group flex gap-3 rounded-xl border border-border bg-card/60 p-4 transition-colors hover:border-primary"
+                className="group flex flex-col gap-2 rounded-xl border border-border bg-card/60 p-3.5 transition-colors hover:border-primary sm:flex-row sm:gap-3 md:p-4"
               >
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-secondary text-secondary-foreground transition-transform group-hover:-rotate-6 group-hover:scale-110">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-secondary-foreground transition-transform group-hover:-rotate-6 group-hover:scale-110 md:size-9">
                   <f.icon className="size-4" aria-hidden="true" />
                 </span>
-                <div>
-                  <h3 className="text-sm font-bold">{f.title}</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground md:text-sm">{f.body}</p>
+                <div className="min-w-0">
+                  <h3 className="text-xs font-bold md:text-sm">{f.title}</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{f.body}</p>
                 </div>
               </motion.li>
             ))}

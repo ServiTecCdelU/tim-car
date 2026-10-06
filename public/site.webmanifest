@@ -1,0 +1,22 @@
+{
+  "name": "Expreso Tim Car",
+  "short_name": "Tim Car",
+  "description": "Transporte de cargas y logística en el centro del país.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060a18",
+  "theme_color": "#060a18",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

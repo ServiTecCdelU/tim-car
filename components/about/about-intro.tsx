@@ -43,7 +43,7 @@ export function AboutIntro() {
           referente en transporte y logística, sin perder su espíritu humano y cercano.
         </motion.p>
 
-        <dl className="mt-10 grid grid-cols-3 gap-3 md:gap-6">
+        <dl className="mt-10 grid grid-cols-3 gap-2.5 min-[380px]:gap-3 md:gap-6">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}

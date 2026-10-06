@@ -60,7 +60,7 @@ export function PageHero({ eyebrow, title, accent, description, video, poster, c
           </span>
         </motion.nav>
 
-        <h1 className="mt-5 max-w-5xl text-5xl leading-[0.92] font-black tracking-tight uppercase sm:text-7xl md:text-8xl [font-stretch:120%]">
+        <h1 className="mt-5 max-w-5xl text-4xl leading-[0.95] font-black tracking-tight uppercase sm:text-6xl md:text-8xl [font-stretch:120%]">
           {words.map((word, i) => (
             <span key={`${word}-${i}`} className="mr-[0.22em] inline-block overflow-hidden pb-1 align-bottom">
               <motion.span
