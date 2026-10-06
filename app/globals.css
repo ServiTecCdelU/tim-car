@@ -1,0 +1,157 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: dark;
+  --background: #060a18;
+  --foreground: #f4f6ff;
+  --card: #0c1330;
+  --card-foreground: #f4f6ff;
+  --popover: #0c1330;
+  --popover-foreground: #f4f6ff;
+  --primary: #e3262f;
+  --primary-foreground: #ffffff;
+  --secondary: #2b4fd8;
+  --secondary-foreground: #ffffff;
+  --muted: #0f1838;
+  --muted-foreground: #9aa4cc;
+  --accent: #2b4fd8;
+  --accent-foreground: #ffffff;
+  --destructive: #e3262f;
+  --border: rgb(255 255 255 / 0.1);
+  --input: rgb(255 255 255 / 0.15);
+  --ring: #2b4fd8;
+  --chart-1: #e3262f;
+  --chart-2: #2b4fd8;
+  --chart-3: #9aa4cc;
+  --chart-4: #f4f6ff;
+  --chart-5: #0c1330;
+  --radius: 0.75rem;
+  --sidebar: #0c1330;
+  --sidebar-foreground: #f4f6ff;
+  --sidebar-primary: #e3262f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0f1838;
+  --sidebar-accent-foreground: #f4f6ff;
+  --sidebar-border: rgb(255 255 255 / 0.1);
+  --sidebar-ring: #2b4fd8;
+}
+
+@theme inline {
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-road: road 0.9s linear infinite;
+  --animate-drive: drive 14s linear infinite;
+  --animate-kenburns: kenburns 24s ease-in-out infinite;
+  --animate-bounce-truck: bounce-truck 0.4s ease-in-out infinite;
+}
+
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes kenburns {
+  0%, 100% { transform: scale(1.05) translate(0, 0); }
+  50% { transform: scale(1.18) translate(-3%, -2%); }
+}
+
+@keyframes bounce-truck {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes road {
+  from { background-position-x: 0; }
+  to { background-position-x: -120px; }
+}
+
+@keyframes drive {
+  from { transform: translateX(-20vw); }
+  to { transform: translateX(120vw); }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .road-lines {
+    background-image: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.85) 0 60px, transparent 60px 120px);
+    background-size: 120px 100%;
+  }
+  .grain {
+    background-image: radial-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
