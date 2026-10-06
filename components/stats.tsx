@@ -12,11 +12,21 @@ const stats = [
 
 function Counter({ to, prefix, suffix }: { to: number; prefix: string; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true, margin: "-80px" })
+  const inView = useInView(ref, { once: true, amount: 0, margin: "0px 0px 200px 0px" })
 
   useEffect(() => {
-    if (!inView || !ref.current) return
     const node = ref.current
+    if (!node) return
+
+    // Safety net: if the viewport observer never fires (seen on some mobile
+    // browsers), still show the real number instead of leaving it stuck at 0.
+    const fallback = setTimeout(() => {
+      node.textContent = `${prefix}${to.toLocaleString("es-AR")}${suffix}`
+    }, 2500)
+
+    if (!inView) return () => clearTimeout(fallback)
+
+    clearTimeout(fallback)
     const controls = animate(0, to, {
       duration: 2,
       ease: [0.22, 1, 0.36, 1],
@@ -24,7 +34,10 @@ function Counter({ to, prefix, suffix }: { to: number; prefix: string; suffix: s
         node.textContent = `${prefix}${Math.round(v).toLocaleString("es-AR")}${suffix}`
       },
     })
-    return () => controls.stop()
+    return () => {
+      clearTimeout(fallback)
+      controls.stop()
+    }
   }, [inView, to, prefix, suffix])
 
   return (
