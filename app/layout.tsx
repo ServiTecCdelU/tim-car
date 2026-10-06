@@ -17,7 +17,7 @@ const plexMono = IBM_Plex_Mono({
   variable: '--font-plex-mono',
 })
 
-const siteUrl = 'https://expresotimcar.com.ar'
+const siteUrl = 'https://tim-car.vercel.app'
 const siteName = 'Expreso Tim Car'
 const title = 'Expreso Tim Car | Transporte de cargas y logística en el centro del país'
 const description =
